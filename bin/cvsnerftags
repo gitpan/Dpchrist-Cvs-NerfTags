@@ -1,0 +1,145 @@
+#! /usr/bin/perl
+#######################################################################
+# $Id: cvsnerftags,v 1.16 2010-03-26 04:10:11 dpchrist Exp $
+#######################################################################
+# uses:
+#----------------------------------------------------------------------
+
+use strict;
+use warnings;
+
+use constant			DEBUG => 0;
+
+use Carp;
+use Cwd;
+use Data::Dumper;
+use Dpchrist::Debug		qw( :all );
+use Dpchrist::Cvs::NerfTags	qw( :all );
+use File::Find;
+use File::Spec::Functions	qw( :ALL );
+use File::Temp			qw( tempfile );
+use Getopt::Long;
+use Pod::Usage;
+
+
+#######################################################################
+# globals:
+#----------------------------------------------------------------------
+
+$Data::Dumper::Sortkeys = 1;
+
+our $VERSION = sprintf("%d.%03d", q$Revision: 1.16 $ =~ /(\d+)/g);
+
+my $opt = \%Dpchrist::Cvs::NerfTags::opt;
+
+my @getoptions_args = (
+	'help|?'	=> \$opt->{-help},
+	'man'		=> \$opt->{-man},
+	'quiet|q'	=> \$opt->{-quiet},
+        'keep-orig'	=> \$opt->{-keep_orig},
+	'timeout'	=> \$opt->{-timeout},
+	'verbose|v'	=> \$opt->{-verbose},
+);
+
+#######################################################################
+# main script:
+#----------------------------------------------------------------------
+
+{
+    ### process command-line options:
+
+    Getopt::Long::Configure("bundling");
+
+    my $r = GetOptions(@getoptions_args);
+
+    if (DEBUG && debug_enabled()) {
+	$Data::Dumper::Sortkeys	= 1;
+	$|			= 1;
+	ddump [$opt, \@ARGV],
+	    [qw(opt   *ARGV)];
+    }
+
+    confess "ERROR processing command line options"
+    unless $r;
+
+    pod2usage(-verbose => 2, -exitval => 0) if $opt->{-man};
+
+    pod2usage(0) if $opt->{-help};
+
+    pod2usage(1) unless @ARGV;
+
+    
+    ### do the work:
+
+    $r = cvsnerftags(@ARGV);
+}
+
+#######################################################################
+
+=head1 NAME
+
+cvsnerftags - disable RCS/CVS tags in working files
+
+
+=head1 SYNOPSIS
+
+cvsnerftags [OPTION...] FILE|DIR...
+
+  Options:
+    --debug, -d		print debugging messages
+    --help, -?		print synopsis and exit
+    --man		print the manual page and exit
+    --quiet		only print fatal error messages
+    --keep-orig		copy original files to *.orig
+    --verbose, -v	print informational messages during run
+
+=head1 DESCRIPTION
+
+Disable RCS/CVS tags in files by replacing leading and trailing
+dollar signs '$' with underscores '_'.
+Useful before importing files that already have RCS/CVS tags.
+
+Original files may be copied to '*-orig' and skipped on subsequent runs
+via the -keep-orig option.
+
+
+=head1 INSTALLATION
+
+This software is installed as part of Dpchrist::Cvs::NerfTags.
+
+=head1 DEPENDENCIES
+
+    Dpchrist::Cvs::NerfTags
+
+
+=head1 SEE ALSO
+
+    Dpchrist::Cvs::NerfTags
+
+
+=head1 AUTHOR
+
+    David Paul Christensen  dpchrist@holgerdanske.com
+
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307,
+USA.
+
+=cut
+
+#######################################################################
