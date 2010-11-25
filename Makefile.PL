@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.6 2010-11-25 02:01:39 dpchrist Exp $
+# $Id: Makefile.PL,v 1.7 2010-11-25 20:48:12 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -26,6 +26,7 @@ use Dpchrist::Module::MakefilePL (
 	bin/cvsnerftags
     	lib/Dpchrist/Cvs/NerfTags.pm
     )],
+    -readme	 	=> qw(lib/Dpchrist/Cvs/NerfTags.pm),
     -release		=> $ENV{RELEASE_ROOT},
 );
 
@@ -34,14 +35,14 @@ WriteMakefile(
     VERSION_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
     PREREQ_PM		=> {
 	Capture::Tiny		=> 0,
-	Dpchrist::Debug		=> 1.036,
-	Dpchrist::Module	=> 1.016,
-	Dpchrist::ShellScript	=> 1.002,
+	Dpchrist::Debug		=> 1.041,
+	Dpchrist::Module	=> 1.021,
+	Dpchrist::LangUtil	=> 1.010,
 	'feature'		=> 0,
     },
     ABSTRACT_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
     AUTHOR		=>
-	'David Christensen dpchrist@holgerdanske.com',
+	'David Paul Christensen <dpchrist@holgerdanske.com>',
     EXE_FILES           => ['./bin/cvsnerftags'],
     clean		=> {
 	FILES => q( *~tmp */*~tmp* Dpchrist* cvsnerftags* ),
