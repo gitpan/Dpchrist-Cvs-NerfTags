@@ -1,12 +1,11 @@
 #######################################################################
-# $Id: NerfTags.pm,v 1.5 2010-11-18 07:09:57 dpchrist Exp $
+# $Id: NerfTags.pm,v 1.6 2010-11-25 02:01:39 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
 
 package Dpchrist::Cvs::NerfTags;
 
-use 5.010000;
 use strict;
 use warnings;
 
@@ -22,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.5 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.6 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
