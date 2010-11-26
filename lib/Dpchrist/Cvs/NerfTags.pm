@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: NerfTags.pm,v 1.7 2010-11-25 20:48:12 dpchrist Exp $
+# $Id: NerfTags.pm,v 1.8 2010-11-26 20:53:09 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
@@ -21,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.7 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.8 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -61,7 +61,7 @@ Dpchrist::Cvs::NerfTags - disable RCS/CVS tags in working files
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.7 $.
+This documentation describes module revision $Revision: 1.8 $.
 
 
 This is alpha test level software

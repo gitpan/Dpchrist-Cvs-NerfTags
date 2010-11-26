@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Dpchrist-Cvs-NerfTags
-version:            1.007
+version:            1.008
 abstract:           disable RCS/CVS tags in working files
 author:
     - David Paul Christensen <dpchrist@holgerdanske.com>
@@ -12,9 +12,9 @@ build_requires:
     ExtUtils::MakeMaker:  0
 requires:
     Capture::Tiny:       0
-    Dpchrist::Debug:     1.041
-    Dpchrist::LangUtil:  1.01
-    Dpchrist::Module:    1.021
+    Dpchrist::Debug:     1.042
+    Dpchrist::LangUtil:  1.011
+    Dpchrist::Module:    1.023
     feature:             0
 no_index:
     directory:

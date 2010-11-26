@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.7 2010-11-25 20:48:12 dpchrist Exp $
+# $Id: Makefile.PL,v 1.8 2010-11-26 20:53:09 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -35,9 +35,9 @@ WriteMakefile(
     VERSION_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
     PREREQ_PM		=> {
 	Capture::Tiny		=> 0,
-	Dpchrist::Debug		=> 1.041,
-	Dpchrist::Module	=> 1.021,
-	Dpchrist::LangUtil	=> 1.010,
+	Dpchrist::Debug		=> 1.042,
+	Dpchrist::Module	=> 1.023,
+	Dpchrist::LangUtil	=> 1.011,
 	'feature'		=> 0,
     },
     ABSTRACT_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
