@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.8 2010-11-26 20:53:09 dpchrist Exp $
+# $Id: Makefile.PL,v 1.9 2010-11-27 03:37:57 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -18,27 +18,36 @@
 # USA.
 #######################################################################
 
-use ExtUtils::MakeMaker;
+eval {
+    require Dpchrist::Module::MakefilePL;
+    
+    import Dpchrist::Module::MakefilePL (
+	-mcpani		=> $ENV{CPAN_AUTHORID},
+	-pod2html	=> [qw(
+	    lib/Dpchrist/Cvs/NerfTags.pm
+	    bin/cvsnerftags
+	)],
+	-readme	 	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
+	-release	=> $ENV{RELEASE_ROOT},
+    );
+};
+warn $@ if $@;
 
-use Dpchrist::Module::MakefilePL (
-    -mcpani		=> $ENV{CPAN_AUTHORID},
-    -pod2html	 	=> [qw(
-	bin/cvsnerftags
-    	lib/Dpchrist/Cvs/NerfTags.pm
-    )],
-    -readme	 	=> qw(lib/Dpchrist/Cvs/NerfTags.pm),
-    -release		=> $ENV{RELEASE_ROOT},
-);
+use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME		=> 'Dpchrist::Cvs::NerfTags',
     VERSION_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
     PREREQ_PM		=> {
 	Capture::Tiny		=> 0,
-	Dpchrist::Debug		=> 1.042,
-	Dpchrist::Module	=> 1.023,
-	Dpchrist::LangUtil	=> 1.011,
-	'feature'		=> 0,
+	Dpchrist::Debug		=> 1.043,
+	Dpchrist::LangUtil	=> 1.012,
+	Dpchrist::Module	=> 1.025,
+	Getopt::Long		=> 0,
+	Pod::Html		=> 0,
+	Pod::Text		=> 0,
+	Pod::Usage		=> 0,
+	feature			=> 0,
     },
     ABSTRACT_FROM	=> 'lib/Dpchrist/Cvs/NerfTags.pm',
     AUTHOR		=>
