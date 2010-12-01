@@ -2,7 +2,7 @@ NAME
     Dpchrist::Cvs::NerfTags - disable RCS/CVS tags in working files
 
 DESCRIPTION
-    This documentation describes module revision $Revision: 1.10 $.
+    This documentation describes module revision $Revision: 1.12 $.
 
     This is alpha test level software and may change or disappear at any
     time.

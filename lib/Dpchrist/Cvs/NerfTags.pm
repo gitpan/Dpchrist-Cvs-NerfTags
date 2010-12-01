@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: NerfTags.pm,v 1.10 2010-11-27 07:37:14 dpchrist Exp $
+# $Id: NerfTags.pm,v 1.12 2010-12-01 18:50:52 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
@@ -21,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.10 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.12 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -33,7 +33,6 @@ use Carp;
 use Cwd;
 use Data::Dumper;
 use Dpchrist::Debug		qw( :all );
-use Dpchrist::Module;		# for Makefile.PL
 use File::Find;
 use File::Spec::Functions	qw( :ALL );
 use File::Temp			qw( tempfile );
@@ -61,7 +60,7 @@ Dpchrist::Cvs::NerfTags - disable RCS/CVS tags in working files
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.10 $.
+This documentation describes module revision $Revision: 1.12 $.
 
 
 This is alpha test level software
