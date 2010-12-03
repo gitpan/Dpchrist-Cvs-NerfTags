@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: NerfTags.pm,v 1.12 2010-12-01 18:50:52 dpchrist Exp $
+# $Id: NerfTags.pm,v 1.13 2010-12-03 05:13:47 dpchrist Exp $
 #######################################################################
 # package:
 #----------------------------------------------------------------------
@@ -21,7 +21,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.12 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.13 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -60,7 +60,7 @@ Dpchrist::Cvs::NerfTags - disable RCS/CVS tags in working files
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.12 $.
+This documentation describes module revision $Revision: 1.13 $.
 
 
 This is alpha test level software
@@ -223,9 +223,7 @@ None by default.
 
 All of the subroutines may be imported by using the ':all' tag:
 
-    use Dpchrist::Cvs::Nerftags    qw( :all );
-
-See 'perldoc Export' for everything in between.
+    use Dpchrist::Cvs::NerfTags    qw( :all );
 
 
 =head1 INSTALLATION
@@ -239,18 +237,13 @@ Old school:
 
 Minimal:
 
-    $ cpan Dpchrist::Cvs::Nerftags
+    $ cpan Dpchrist::Cvs::NerfTags
     
 Complete:
 
     $ cpan Bundle::Dpchrist
 
-The following warning may be safely ignored:
-
-    Can't locate Dpchrist/Module/MakefilePL.pm in @INC (@INC contains: /
-    etc/perl /usr/local/lib/perl/5.10.0 /usr/local/share/perl/5.10.0 /us
-    r/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.10 /usr/share/perl/5.10
-    /usr/local/lib/site_perl .) at Makefile.PL line 22.
+The following warnings should not prevent installation:
 
 
 =head2 PREREQUISITES
