@@ -1,6 +1,6 @@
 #! /usr/bin/perl
 #######################################################################
-# $Id: cvsnerftags.t,v 1.30 2010-12-02 20:12:03 dpchrist Exp $
+# $Id: cvsnerftags.t,v 1.31 2010-12-04 00:50:13 dpchrist Exp $
 #
 # Regression test for cvsnerftags.
 #
@@ -28,7 +28,7 @@ use Carp;
 use Capture::Tiny		qw( tee );
 use Config;
 use Data::Dumper;
-use Dpchrist::LangUtil		qw( :all );
+use Dpchrist::Term		qw( echo_system );
 use File::Basename;
 use File::Path			qw( make_path remove_tree );
 use File::Spec::Functions;
@@ -100,16 +100,16 @@ sub write_tagged_testfile
     print "$0 writing $f...";
     open my $fh, ">", "$f" or confess $!;
     print $fh join("\n",
-'$Id: cvsnerftags.t,v 1.30 2010-12-02 20:12:03 dpchrist Exp $',
-'our $VERSION = sprintf("%d.%03d", q$Revision: 1.30 $ =~ /(\d+)/g);',
+'$Id: cvsnerftags.t,v 1.31 2010-12-04 00:50:13 dpchrist Exp $',
+'our $VERSION = sprintf("%d.%03d", q$Revision: 1.31 $ =~ /(\d+)/g);',
 '$Author: dpchrist $',
-'$Date: 2010-12-02 20:12:03 $',
-'$Header: /cvs/dpchrist/Dpchrist-Cvs-NerfTags/t/cvsnerftags.t,v 1.30 2010-12-02 20:12:03 dpchrist Exp $',
+'$Date: 2010-12-04 00:50:13 $',
+'$Header: /cvs/dpchrist/Dpchrist-Cvs-NerfTags/t/cvsnerftags.t,v 1.31 2010-12-04 00:50:13 dpchrist Exp $',
 '$Name:  $',
 '$Locker:  $',
 # Log causes unending problems ...
 '$RCSfile: cvsnerftags.t,v $',
-'$Revision: 1.30 $',
+'$Revision: 1.31 $',
 '$Source: /cvs/dpchrist/Dpchrist-Cvs-NerfTags/t/cvsnerftags.t,v $',
     );
     close $fh or confess $!;
